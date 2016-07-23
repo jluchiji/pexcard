@@ -4,32 +4,35 @@
  * @author  Denis Luchkin-Zhou <wyvernzora@gmail.com>
  * @license MIT
  */
+const _            = require('lodash');
 const Endpoint     = require('./endpoint');
 
 
 function Resource(parent, config, children = { }) {
 
-  /* Allow non-constructor calls */
-  if (!(this instanceof Resource)) {
-    return new Resource(parent, config, children);
-  }
-
-
   /**
-   * Define endpoints
+   * Convert configuration data into endpoint factories
    */
+  const factories = { };
   for (const key of Object.keys(config)) {
-    this[key] = Endpoint(parent, config[key]);
+    factories[key] = Endpoint(parent, config[key]);
   }
+  _.assign(factories, children);
 
 
   /**
-   * Attach child resources
+   * The function version of the Resource object
    */
-  for (const key of Object.keys(children)) {
-    this[key] = children[key];
-  }
+  const fn = (args) => _.mapValues(factories, i => i(args));
 
 
+  /**
+   * Non-carried versions
+   */
+  const resolved = _.mapValues(factories, i => i({ }));
+  _.assign(fn, resolved);
+
+
+  return fn;
 }
 module.exports = Resource;
