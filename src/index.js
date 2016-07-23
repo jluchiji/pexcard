@@ -54,5 +54,9 @@ function PexCard({
     scheduledFundingRules: Resource(this, require('./resources/card/scheduled-funding'))
   });
 
+  this.bulk = Resource(this, require('./resources/bulk'));
+
+  this.group = Resource(this, require('./resources/group'));
+
 }
 module.exports = PexCard;
