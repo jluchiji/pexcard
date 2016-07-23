@@ -1,0 +1,120 @@
+{
+  "name": "pexcard",
+  "description": "Node.js bindings for PEX Card API",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jluchiji/pexcard",
+  "author": {
+    "name": "Denis Luchkin-Zhou",
+    "email": "denis@ricepo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jluchiji/pexcard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jluchiji/pexcard/issues"
+  },
+  "files": [
+    "lib"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=4.1.0",
+    "npm": ">=2.14.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/gulp coverage:report",
+    "prepublish": "./node_modules/.bin/gulp rebuild"
+  },
+  "dependencies": {
+    "ajv": "^4.2.0",
+    "request-promise": "^4.0.2"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-core": "^6.4.0",
+    "babel-eslint": "^4.1.6",
+    "babel-plugin-transform-flow-strip-types": "^6.3.15",
+    "babel-preset-es2015-node4": "^2.0.2",
+    "babel-preset-stage-3": "^6.3.13",
+    "bluebird": "^3.1.5",
+    "del": "^2.0.2",
+    "eslint": "^1.10.3",
+    "eslint-plugin-babel": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-changed": "^1.3.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-declare": "^0.3.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-handlebars": "^4.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.7",
+    "gulp-wrap": "^0.11.0",
+    "merge-stream": "^1.0.0",
+    "sinon": "^1.15.4"
+  },
+  "keywords": [],
+  "babel": {
+    "auxiliaryCommentBefore": "istanbul ignore next",
+    "presets": [
+      "es2015-node4",
+      "stage-3"
+    ],
+    "plugins": [
+      "transform-flow-strip-types"
+    ]
+  },
+  "flowConfig": {
+    "all": true
+  },
+  "jsInspectConfig": {
+    "threshold": 25,
+    "suppress": 0
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "airbnb/base",
+    "parser": "babel-eslint",
+    "rules": {
+      "strict": 0,
+      "new-cap": 0,
+      "no-undef": 2,
+      "no-shadow": 1,
+      "id-length": 0,
+      "func-names": 0,
+      "no-console": 1,
+      "key-spacing": 0,
+      "comma-dangle": [
+        1,
+        "never"
+      ],
+      "padded-blocks": 0,
+      "no-multi-spaces": 0,
+      "no-const-assign": 2,
+      "no-param-reassign": 0,
+      "object-curly-spacing": [
+        2,
+        "always"
+      ],
+      "array-bracket-spacing": [
+        2,
+        "always"
+      ],
+      "space-before-function-paren": [
+        2,
+        "never"
+      ]
+    },
+    "ecmaFeatures": {
+      "generators": true
+    },
+    "envs": {
+      "node": true,
+      "commonjs": true,
+      "browser": false
+    }
+  }
+}
