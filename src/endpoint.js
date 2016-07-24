@@ -28,15 +28,21 @@ function endpoint(parent, { method, path }) {
     /* Grab any headers specified in parent */
     headers = _.assign({ }, parent.headers, headers);
 
+    /* Prepare the request body */
+    const body = _
+      .chain(args)
+      .omit(...template.params)
+      .mapKeys((v, k) => _.capitalize(k))
+      .value();
 
     /* Make the request */
     const response = await Request({
+      body,
       method,
       headers,
       qs: query,
       json: true,
-      uri: template(args),
-      body: _.omit(args, template.params)
+      uri: template(args)
     });
 
 
