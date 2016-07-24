@@ -23,8 +23,7 @@ function endpoint(parent, { method, path }) {
   /**
    * Return the request function factory
    */
-  return carry => async (args = { }, query, headers) => {
-    args = _.assign(carry, args);
+  return async (args = { }, query, headers) => {
 
     /* Grab any headers specified in parent */
     headers = _.assign({ }, parent.headers, headers);
