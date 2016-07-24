@@ -24,7 +24,7 @@ function UrlBuilder(root, path) {
   /**
    * Create a template function
    */
-  const fn = params => template.replace(/:(\w+)/g, i => {
+  const fn = params => template.replace(/:([_a-zA-Z][_a-zA-Z0-9]+)/g, i => {
 
     /* Remove the ':' marker */
     i = i.substr(1);
@@ -43,7 +43,7 @@ function UrlBuilder(root, path) {
    */
   fn.params = [ ];
   let match = null;
-  const pattern = /:(\w+)/g;
+  const pattern = /:([_a-zA-Z][_a-zA-Z0-9]+)/g;
   while (true) {
     match = pattern.exec(template);
     if (!match) { break; }

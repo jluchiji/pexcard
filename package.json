@@ -56,28 +56,27 @@
     "gulp-util": "^3.0.7",
     "gulp-wrap": "^0.13.0",
     "merge-stream": "^1.0.0",
+    "nyc": "^7.1.0-candidate3",
     "sinon": "^1.15.4"
   },
   "keywords": [],
-  "babel": {
-    "auxiliaryCommentBefore": "istanbul ignore next",
-    "presets": [
-      "es2015-node4",
-      "stage-3"
+  "ava": {
+    "require": [
+      "babel-register"
     ],
-    "plugins": [
-      "transform-flow-strip-types"
+    "babel": "inherit"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "src/**/*.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "html",
+      "lcov"
     ]
-  },
-  "flowConfig": {
-    "all": true
-  },
-  "jsInspectConfig": {
-    "threshold": 25,
-    "suppress": 0
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": "ricepo-base"
   }
 }
