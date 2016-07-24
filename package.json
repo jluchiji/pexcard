@@ -24,7 +24,7 @@
     "npm": ">=2.14.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/gulp coverage:report",
+    "test": "./node_modules/.bin/ava",
     "prepublish": "./node_modules/.bin/gulp rebuild"
   },
   "dependencies": {
@@ -56,6 +56,7 @@
     "gulp-util": "^3.0.7",
     "gulp-wrap": "^0.13.0",
     "merge-stream": "^1.0.0",
+    "mockery": "^1.7.0",
     "nyc": "^7.1.0-candidate3",
     "sinon": "^1.15.4"
   },
@@ -67,13 +68,6 @@
     "babel": "inherit"
   },
   "nyc": {
-    "all": true,
-    "include": [
-      "src/**/*.js"
-    ],
-    "require": [
-      "babel-register"
-    ],
     "reporter": [
       "html",
       "lcov"
