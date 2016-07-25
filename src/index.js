@@ -8,12 +8,15 @@ const RestKit      = require('rest-kit');
 
 
 module.exports = RestKit({
-  // root: 'https://coreapi.pexcard.com/v4',
-  root: 'https://corebeta.pexcard.com/api/v4',
-  pre: require('./hooks/pre')
+
+  root:            'https://coreapi.pexcard.com/v4'
+
 }, {
-  required: ['token'],
-  oncreate: require('./hooks/oncreate')
+
+  required:        ['token'],
+  oncreate:        require('./hooks/oncreate'),
+  pre:             require('./hooks/pre')
+
 }, {
 
   business:        RestKit.Resource(require('./resources/business'), {
@@ -25,12 +28,18 @@ module.exports = RestKit({
   card:            RestKit.Resource(require('./resources/card'), {
     profile:       RestKit.Resource(require('./resources/card/profile')),
     funding:       RestKit.Resource({ }, {
-      lowBalance:  RestKit.Resource(require('./resources/card/low-balance-funding')),
-      scheduled:   RestKit.Resource(require('./resources/card/scheduled-funding'))
+      lowBalance:  RestKit.Resource(require('./resources/card/funding/low-balance')),
+      scheduled:   RestKit.Resource(require('./resources/card/funding/scheduled'))
     })
   }),
 
-  bulk:            RestKit.Resource(require('./resources/bulk')),
+  bulk:            RestKit.Resource(require('./resources/bulk'), {
+    spending:      RestKit.Resource(require('./resources/bulk/spending')),
+    funding:       RestKit.Resource({ }, {
+      lowBalance:  RestKit.Resource(require('./resources/bulk/funding/low-balance')),
+      scheduled:   RestKit.Resource(require('./resources/bulk/funding/scheduled'))
+    })
+  }),
 
   group:           RestKit.Resource(require('./resources/group'))
 

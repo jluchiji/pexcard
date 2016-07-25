@@ -1,5 +1,5 @@
 /**
- * resources/card/scheduled-funding.js
+ * resources/card/funding/low-balance-funding.js
  *
  * @author  Denis Luchkin-Zhou <wyvernzora@gmail.com>
  * @license MIT
@@ -8,19 +8,19 @@ module.exports = {
 
   get: {
     method: 'GET',
-    path: '/Card/ScheduledFundingRules/:id',
+    path: '/Card/LowBalanceFundingRules/:id',
     params: ['id']
   },
 
   set: {
     method: 'PUT',
-    path: '/Card/ScheduledFundingRules/:id',
+    path: '/Card/LowBalanceFundingRules/:id',
     params: ['id']
   },
 
   delete: {
     method: 'DELETE',
-    path: '/Card/ScheduledFundingRules/:id',
+    path: '/Card/LowBalanceFundingRules/:id',
     params: ['id']
   }
 
