@@ -4,59 +4,34 @@
  * @author  Denis Luchkin-Zhou <denis@ricepo.com>
  * @license MIT
  */
-const Resource     = require('./resource');
+const RestKit      = require('rest-kit');
 
 
-function PexCard({
-  // root = 'https://coreapi.pexcard.com/v4',
-  root = 'https://corebeta.pexcard.com/api/v4',
-  token
-}) {
+module.exports = RestKit({
+  // root: 'https://coreapi.pexcard.com/v4',
+  root: 'https://corebeta.pexcard.com/api/v4',
+  pre: require('./hooks/pre')
+}, {
+  required: ['token'],
+  oncreate: require('./hooks/oncreate')
+}, {
 
+  business:        RestKit.Resource(require('./resources/business'), {
+    admin:         RestKit.Resource(require('./resources/business/admin')),
+    profile:       RestKit.Resource(require('./resources/business/profile')),
+    transfer:      RestKit.Resource(require('./resources/business/transfer'))
+  }),
 
-  /**
-   * Allow non-constructor calls
-   */
-  if (!(this instanceof PexCard)) {
-    return new PexCard({ root, token });
-  }
+  card:            RestKit.Resource(require('./resources/card'), {
+    profile:       RestKit.Resource(require('./resources/card/profile')),
+    funding:       RestKit.Resource({ }, {
+      lowBalance:  RestKit.Resource(require('./resources/card/low-balance-funding')),
+      scheduled:   RestKit.Resource(require('./resources/card/scheduled-funding'))
+    })
+  }),
 
+  bulk:            RestKit.Resource(require('./resources/bulk')),
 
-  /**
-   * We REALLY need that token
-   */
-  if (!token) {
-    throw new Error("Missing parameter 'token'");
-  }
+  group:           RestKit.Resource(require('./resources/group'))
 
-
-  /**
-   * Assign the information to this
-   */
-  this.root = root;
-  this.headers = {
-    Authorization: `token ${token}`
-  };
-
-
-  /**
-   * Generate resources based on descriptions
-   */
-  this.business = Resource(this, require('./resources/business'), {
-    admin: Resource(this, require('./resources/business/admin')),
-    profile: Resource(this, require('./resources/business/profile')),
-    transfer: Resource(this, require('./resources/business/transfer'))
-  });
-
-  this.card = Resource(this, require('./resources/card/index'), {
-    profile: Resource(this, require('./resources/card/profile')),
-    lowBalanceFundingRules: Resource(this, require('./resources/card/low-balance-funding')),
-    scheduledFundingRules: Resource(this, require('./resources/card/scheduled-funding'))
-  });
-
-  this.bulk = Resource(this, require('./resources/bulk'));
-
-  this.group = Resource(this, require('./resources/group'));
-
-}
-module.exports = PexCard;
+});

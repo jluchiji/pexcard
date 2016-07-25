@@ -18,12 +18,14 @@ module.exports = {
 
   update: {
     method: 'PUT',
-    path: '/Group/:id'
+    path: '/Group/:id',
+    params: ['id']
   },
 
   delete: {
     method: 'DELETE',
-    path: '/Group/:id'
+    path: '/Group/:id',
+    params: ['id']
   }
 
 };

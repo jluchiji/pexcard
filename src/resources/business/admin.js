@@ -13,7 +13,8 @@ module.exports = {
 
   get: {
     method: 'GET',
-    path: '/Business/Admin/:id'
+    path: '/Business/Admin/:id',
+    params: ['id']
   },
 
   create: {
@@ -23,12 +24,14 @@ module.exports = {
 
   delete: {
     method: 'DELETE',
-    path: '/Business/Admin/:id'
+    path: '/Business/Admin/:id',
+    params: ['id']
   },
 
   update: {
     method: 'PUT',
-    path: '/Business/Admin/:id'
+    path: '/Business/Admin/:id',
+    params: ['id']
   }
 
 };

@@ -8,17 +8,20 @@ module.exports = {
 
   get: {
     method: 'GET',
-    path: '/Card/ScheduledFundingRules/:id'
+    path: '/Card/ScheduledFundingRules/:id',
+    params: ['id']
   },
 
   set: {
     method: 'PUT',
-    path: '/Card/ScheduledFundingRules/:id'
+    path: '/Card/ScheduledFundingRules/:id',
+    params: ['id']
   },
 
   delete: {
     method: 'DELETE',
-    path: '/Card/ScheduledFundingRules/:id'
+    path: '/Card/ScheduledFundingRules/:id',
+    params: ['id']
   }
 
 };

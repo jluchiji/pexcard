@@ -18,7 +18,8 @@ module.exports = {
 
   delete: {
     method: 'DELETE',
-    path: '/Business/OneTimeTransfer/:id'
+    path: '/Business/OneTimeTransfer/:id',
+    params: ['id']
   }
 
 };

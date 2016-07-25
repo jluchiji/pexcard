@@ -8,12 +8,14 @@ module.exports = {
 
   get: {
     method: 'GET',
-    path: '/Card/Profile/:id'
+    path: '/Card/Profile/:id',
+    params: ['id']
   },
 
   update: {
     method: 'PUT',
-    path: '/Card/Profile/:id'
+    path: '/Card/Profile/:id',
+    params: ['id']
   }
 
 };
