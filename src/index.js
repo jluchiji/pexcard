@@ -1,7 +1,7 @@
 /**
  * index.js
  *
- * @author  Denis Luchkin-Zhou <denis@ricepo.com>
+ * @author  Denis Luchkin-Zhou <wyvernzora@gmail.com>
  * @license MIT
  */
 const RestKit      = require('rest-kit');
@@ -20,27 +20,29 @@ module.exports = RestKit({
 }, {
 
   business:        RestKit.Resource(require('./resources/business'), {
-    admin:         RestKit.Resource(require('./resources/business/admin')),
-    profile:       RestKit.Resource(require('./resources/business/profile')),
-    transfer:      RestKit.Resource(require('./resources/business/transfer'))
+    admin:           RestKit.Resource(require('./resources/business/admin')),
+    profile:         RestKit.Resource(require('./resources/business/profile')),
+    transfer:        RestKit.Resource(require('./resources/business/transfer'))
   }),
 
   card:            RestKit.Resource(require('./resources/card'), {
-    profile:       RestKit.Resource(require('./resources/card/profile')),
-    funding:       RestKit.Resource({ }, {
-      lowBalance:  RestKit.Resource(require('./resources/card/funding/low-balance')),
-      scheduled:   RestKit.Resource(require('./resources/card/funding/scheduled'))
+    profile:         RestKit.Resource(require('./resources/card/profile')),
+    funding:         RestKit.Resource({ }, {
+      lowBalance:      RestKit.Resource(require('./resources/card/funding/low-balance')),
+      scheduled:       RestKit.Resource(require('./resources/card/funding/scheduled'))
     })
   }),
 
   bulk:            RestKit.Resource(require('./resources/bulk'), {
-    spending:      RestKit.Resource(require('./resources/bulk/spending')),
-    funding:       RestKit.Resource({ }, {
-      lowBalance:  RestKit.Resource(require('./resources/bulk/funding/low-balance')),
-      scheduled:   RestKit.Resource(require('./resources/bulk/funding/scheduled'))
+    spending:        RestKit.Resource(require('./resources/bulk/spending')),
+    funding:         RestKit.Resource({ }, {
+      lowBalance:      RestKit.Resource(require('./resources/bulk/funding/low-balance')),
+      scheduled:       RestKit.Resource(require('./resources/bulk/funding/scheduled'))
     })
   }),
 
-  group:           RestKit.Resource(require('./resources/group'))
+  group:           RestKit.Resource(require('./resources/group')),
+
+  token:           RestKit.Resource(require('./resources/token'))
 
 });

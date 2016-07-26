@@ -1,8 +1,8 @@
 /**
  * hooks/pre.js
  *
- * @author  Denis Luchkin-Zhou <denis@ricepo.com>
- * @license 2015-16 (C) Ricepo LLC. All Rights Reserved.
+ * @author  Denis Luchkin-Zhou <wyvernzora@gmail.com>
+ * @license MIT
  */
 const _            = require('lodash');
 

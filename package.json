@@ -33,7 +33,7 @@
     "moment": "^2.14.1",
     "request": "^2.74.0",
     "request-promise": "^4.0.2",
-    "rest-kit": "0.0.3"
+    "rest-kit": "0.0.5"
   },
   "devDependencies": {
     "ava": "^0.15.2",
